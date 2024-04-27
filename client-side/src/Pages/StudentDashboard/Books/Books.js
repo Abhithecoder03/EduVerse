@@ -4,7 +4,7 @@ import Category from "../../../Components/Category/Category";
 
 const Books = () => {
   return (
-    <div className="flex flex-col w-full md:w-4/5 bg-grey items-center">
+    <div className="flex flex-col w-full bg-grey items-center overflow-hidden">
       <div className="flex w-full justify-center mt-8">
         <Search />
       </div>

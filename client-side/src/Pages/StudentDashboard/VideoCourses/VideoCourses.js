@@ -5,7 +5,7 @@ import Search from "../../../Components/Search/Search";
 const VideoCourses = () => {
   return (
     <>
-      <div className="flex flex-col w-full md:w-4/5 bg-grey items-center">
+      <div className="flex flex-col w-full bg-grey items-center">
         <div className="flex w-full justify-center mt-8">
           <Search />
         </div>
