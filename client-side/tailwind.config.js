@@ -14,6 +14,7 @@ module.exports = {
         'yellow': '#FFE143',
         'blue':'#2EB8CB',
         'grey': '#F8F6F2',
+        'gray':'#D3D3D3'
       },
       fontFamily: {
         'poppins': ['"Poppins", sans'], // 'Poppins' is the font name, 'sans' is a generic font family
