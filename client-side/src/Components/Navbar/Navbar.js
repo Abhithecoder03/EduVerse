@@ -39,10 +39,10 @@ const Navbar = () => {
           {/*  //!Mobile screen */}
 
           <div className="sm:hidden flex flex-1 justify-end items-center">
-            <a className="mr-4 ml-[-20px]  pl-3 pr-3 pt-1 pb-1 text-sm border border-transparent hover:text-blue" href=""> <PersonIcon className='mr-1' />Login  </a>
-            <a className="ml-1 pl-3 pr-3 pt-1 pb-1 mr-4 text-sm border bg-yellow text-black hover:bg-blue hover:text-white rounded font-semibold transition duration-300 ease-in-out" href="">
+            <Link className="mr-4 ml-[-20px]  pl-3 pr-3 pt-1 pb-1 text-sm border border-transparent hover:text-blue" to="/login"> <PersonIcon className='mr-1' />Login </Link>
+            <Link className="ml-1 pl-3 pr-3 pt-1 pb-1 mr-4 text-sm border bg-yellow text-black hover:bg-blue hover:text-white rounded font-semibold transition duration-300 ease-in-out" to="Signup">
               Sign Up
-            </a>
+            </Link>
             <div className='text-red-500 text-xl mr-5' onClick={() => setToggle(!toggle)}>
               {toggle ? <CloseIcon /> : <MenuIcon className='' />}
             </div>
@@ -53,7 +53,7 @@ const Navbar = () => {
             >
               <div className='list-none items-start grid grid-cols-1 divide-y p-4 pt-1 rounded-bl-lg bg-white ' >
                 <a className="text-lg hover:text-blue mr-10  " href="">About us</a>
-                <a className="text-lg hover:text-blue mr-10  " href="">Blog</a>
+                <Link to="/blog" className="text-lg hover:text-blue mr-10 ">Blog </Link>
                 <a className="text-lg hover:text-blue mr-10  " href="">Career</a>
                 <a className="text-lg hover:text-blue mr-10  " href=""> Contact us</a>
 
