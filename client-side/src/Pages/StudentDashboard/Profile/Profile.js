@@ -1,16 +1,15 @@
-import React, { useState } from 'react';
-import PersonIcon from '@mui/icons-material/Person';
-import { Image } from '@chakra-ui/react'
-import PersonalInfo from './PersonalInfo';
-import CommunicationDetails from './CommunicationDetails';
-import SocialLinks from './SocialLinks';
+import React, { useState } from "react";
+import PersonIcon from "@mui/icons-material/Person";
+import { Image } from "@chakra-ui/react";
+import PersonalInfo from "./PersonalInfo";
+import CommunicationDetails from "./CommunicationDetails";
+import SocialLinks from "./SocialLinks";
 const Profile = () => {
+  const [activeItem, setActiveItem] = useState(0);
 
-    const [activeItem, setActiveItem] = useState(0);
-
-    const handleItemClick = (index) => {
-        setActiveItem(index);
-    };
+  const handleItemClick = (index) => {
+    setActiveItem(index);
+  };
 
     const items = [
         "Personal Information",

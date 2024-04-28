@@ -1,6 +1,5 @@
-
-import EditIcon from '@mui/icons-material/Edit';
-import { Save } from '@mui/icons-material';
+import EditIcon from "@mui/icons-material/Edit";
+import { Save } from "@mui/icons-material";
 const PersonalInfo = () => {
 
 

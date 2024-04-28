@@ -1,9 +1,9 @@
-import EditIcon from '@mui/icons-material/Edit';
-import { Save } from '@mui/icons-material';
-import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
-import { useState } from 'react';
+import EditIcon from "@mui/icons-material/Edit";
+import { Save } from "@mui/icons-material";
+import AddCircleOutlinedIcon from "@mui/icons-material/AddCircleOutlined";
+import { useState } from "react";
 const SocialLinks = () => {
-    const [socialLinks, setSocialLinks] = useState([]);
+  const [socialLinks, setSocialLinks] = useState([]);
 
     const handleAddSocialLink = () => {
         setSocialLinks([...socialLinks, {}]);
