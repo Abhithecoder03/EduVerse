@@ -93,12 +93,15 @@ const Sidebar = () => {
                 </button>
               </li>
             </Link>
+            <Link to="/Student/doubts">
             <li className="pl-8">
               <button id="1">
                 <Psychology className="text-blue-500 mr-2" />
                 <span className="text font-semibold">Expert</span>
               </button>
+              
             </li>
+            </Link>
             <li className="pl-8">
               <button id="1">
                 <Bookmark className="text-blue-500 mr-2" />

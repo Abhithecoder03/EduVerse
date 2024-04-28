@@ -3,15 +3,19 @@ import Category from "../../../Components/Category/Category";
 import Search from "../../../Components/Search/Search";
 
 const VideoCourses = () => {
+  const handleVideoCoursesCategoryClick = (category) => {
+    // Handle category click specific to VideoCourses
+    console.log("Clicked on category in VideoCourses:", category);
+  };
   return (
     <>
       <div className="flex flex-col w-full md:w-4/5 bg-grey items-center">
         <div className="flex w-full justify-center mt-8">
-          <Search />
+          <Search onSearch={handleVideoCoursesCategoryClick} context="VideoCourses"/>
         </div>
         <div className="flex flex-col w-full items-center mt-4">
           <div className="w-full md:w-4/5 border-b-2 border-gray-400"></div>
-          <Category />
+          <Category searchBooks={handleVideoCoursesCategoryClick} context="VideoCourses" />
         </div>
 
         <div className="h-full p-2 flex-col overflow-y-auto overflow-x-hidden">
