@@ -40,7 +40,7 @@ const Chat = () => {
   };
 
   return (
-    <div className='bg-[#555] w-screen  ml-10 mr-1 overflow-y-auto rounded-lg'>
+    <div className='bg-[#555] h-screen w-full  ml-10 mr-1 overflow-y-auto rounded-lg'>
       <div className='grid w-full justify-center align-middle'>
         {messages.map((message, index) => (
           <React.Fragment key={index}>

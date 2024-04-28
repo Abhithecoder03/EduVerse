@@ -89,7 +89,7 @@ const items = [
   { title: 'Profile', Icon: BiUser, href: '/student/profile' },
   { title: 'Books', Icon: LiaBookSolid, href: '/student/books' },
   { title: 'Video Course', Icon: PiVideo, href: '/student/videoCourse' },
-  { title: 'Expert', Icon: HiOutlineChatBubbleBottomCenterText, href: '#' },
+  { title: 'Expert', Icon: HiOutlineChatBubbleBottomCenterText, href: '/Student/doubts' },
   { title: 'Wishlist', Icon: CiBookmarkPlus, href: '#' },
 ]
 
