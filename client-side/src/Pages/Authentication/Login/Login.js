@@ -84,7 +84,7 @@ const Login = () => {
           </div>
 
           <Button className="mt-6" bg="#FFE143">
-            Sign up
+            Login
           </Button>
 
           <p className="hidden md:flex text-white mt-6 justify-center">Don’t Have an Account? </p>

@@ -18,13 +18,6 @@ const StudentDashboard = () => {
 
 export default StudentDashboard;
 
-
-
-
-
-
-
-
 // import React from "react";
 // import Sidebar from "../../Components/Sidebar/Sidebar";
 // import { Routes, Route } from "react-router-dom";
