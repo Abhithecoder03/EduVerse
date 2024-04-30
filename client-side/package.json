@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "port": "3000",
-  "port": "3000",
   "dependencies": {
     "@chakra-ui/react": "^2.8.1",
+    "@chatscope/chat-ui-kit-react": "^2.0.3",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.15",
@@ -16,7 +16,9 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.8",
     "clipboard": "^2.0.11",
+    "colors": "^1.4.0",
     "framer-motion": "^10.18.0",
+    "os-browserify": "^0.3.0",
     "react": "^18.2.0",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.2.0",
@@ -25,6 +27,7 @@
     "react-scripts": "5.0.1",
     "react-syntax-highlighter": "^15.5.0",
     "react-use": "^17.5.0",
+    "util": "^0.12.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
