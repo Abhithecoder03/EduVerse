@@ -2,11 +2,12 @@ import { Box, Spacer } from "@chakra-ui/react";
 import PersonIcon from "@mui/icons-material/Person";
 import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import MenuIcon from "@mui/icons-material/Menu";
-
+import { MdLogout } from "react-icons/md";
 import CloseIcon from "@mui/icons-material/Close";
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import LogoutIcon from '@mui/icons-material/Logout';
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
 
@@ -30,19 +31,38 @@ const Navbar = () => {
             <a className="text-lg hover:text-blue mr-10  " href="">Career</a>
             <a className="text-lg hover:text-blue mr-8  " href=""> Contact us</a>
 
-
-            <Link className="mr-4 ml-3 pl-3 pr-3 pt-1 pb-1 text-lg border border-transparent hover:text-blue" to="/login"> <PersonIcon className='mr-1' />Login  </Link>
+            <div className="flex flex-row hidden">
+            <Link className="mr-4 ml-3 pl-3 pr-3 pt-1 pb-1 text-lg border border-transparent hover:text-blue rounded-full" to="/login"> <PersonIcon className='mr-1' />Login  </Link>
             <Link className="ml-1 pl-3 pr-3 pt-1 pb-1 mr-4 text-lg border bg-yellow text-black hover:bg-blue hover:text-white rounded font-semibold transition duration-300 ease-in-out" to="Signup">
               Sign Up
             </Link>
+            </div>
+            <div className="flex">
+            <Link className="mr-4 ml-[-20px]  pl-3 pr-3 pt-1 pb-1 text-lg border border-transparent hover:text-blue" to="/login"> <LogoutIcon className='mr-1' />Logout </Link>
+            <Link className="ml-1 pl-3 pr-3 pt-1 pb-1 mr-4 text-l border bg-yellow text-black hover:bg-blue hover:text-white rounded font-semibold transition duration-300 ease-in-out" to="Student/profile">
+            <PersonIcon /> Profile
+              </Link>
+              </div>
+             
+
+
+
           </div>
           {/*  //!Mobile screen */}
 
           <div className="sm:hidden flex flex-1 justify-end items-center">
+          <div className="">
+            <Link className="mr-4 ml-[-20px]  pl-3 pr-3 pt-1 pb-1 text-sm border border-transparent hover:text-blue" to="/login"> <LogoutIcon className='mr-1' />Logout </Link>
+            <Link className="ml-1 pl-3 pr-3 pt-1 pb-1 mr-4 text-l border bg-yellow text-black hover:bg-blue hover:text-white rounded font-semibold transition duration-300 ease-in-out" to="Student/profile">
+            <PersonIcon /> Profile
+              </Link>
+              </div>
+            <div className="hidden">
             <Link className="mr-4 ml-[-20px]  pl-3 pr-3 pt-1 pb-1 text-sm border border-transparent hover:text-blue" to="/login"> <PersonIcon className='mr-1' />Login </Link>
             <Link className="ml-1 pl-3 pr-3 pt-1 pb-1 mr-4 text-sm border bg-yellow text-black hover:bg-blue hover:text-white rounded font-semibold transition duration-300 ease-in-out" to="Signup">
               Sign Up
-            </Link>
+              </Link>
+              </div>
             <div className='text-red-500 text-xl mr-5' onClick={() => setToggle(!toggle)}>
               {toggle ? <CloseIcon /> : <MenuIcon className='' />}
             </div>
