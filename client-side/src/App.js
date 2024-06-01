@@ -18,6 +18,7 @@ import Books from "./Pages/StudentDashboard/Books/Books";
 import Doubt from "./Pages/StudentDashboard/doubt/doubt";
 import ProtectedRoute from './ProtectedRoute';
 import AboutUs from "./Pages/AboutUs/AboutUs";
+import NewStory from "./Pages/Blog/NewStory";
 const App = () => {
   return (
     <div className="w-screen h-screen flex flex-col">
@@ -44,6 +45,8 @@ const App = () => {
         <Route path="/privacy" Component={Privacy} />
         <Route path="/blog" Component={Blog} />
         <Route path='/about-us' Component={AboutUs}/>
+        <Route path="/blog/newStory" Component={NewStory} />
+
       </Routes>
     </div>
   );
