@@ -123,10 +123,10 @@ const Navbar = () => {
             </Link>
           </h1>
           <div className="hidden sm:flex justify-end items-center flex-1 ml-25">
-            <a className="text-lg hover:text-blue mr-10" href="/about-us">About us</a>
+            <Link to="/about-us" className="text-lg hover:text-blue mr-10" >About us</Link>
             <Link to="/blog" className="text-lg hover:text-blue mr-10">Blog</Link>
-            <a className="text-lg hover:text-blue mr-10" href="">Career</a>
-            <a className="text-lg hover:text-blue mr-8" href="">Contact us</a>
+            <Link to="/" className="text-lg hover:text-blue mr-10" href="">Career</Link>
+            <Link to="/Contactus" className="text-lg hover:text-blue mr-8">Contact us</Link>
 
             {User ? (
               <div className="flex">
@@ -156,10 +156,10 @@ const Navbar = () => {
             </div>
             <div className={`${!toggle ? "hidden" : "flex"} bg-black-gradient absolute top-20 mt-0 mr-0 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}>
               <div className="list-none items-start grid grid-cols-1 divide-y p-4 pt-1 rounded-bl-lg bg-white">
-                <a className="text-lg hover:text-blue mr-10" href="">About us</a>
-                <Link to="/blog" className="text-lg hover:text-blue mr-10">Blog</Link>
-                <a className="text-lg hover:text-blue mr-10" href="">Career</a>
-                <a className="text-lg hover:text-blue mr-10" href="">Contact us</a>
+              <Link to="/about-us" className="text-lg hover:text-blue mr-10" >About us</Link>
+            <Link to="/blog" className="text-lg hover:text-blue mr-10">Blog</Link>
+            <Link to="/" className="text-lg hover:text-blue mr-10" href="">Career</Link>
+            <Link to="/Contactus" className="text-lg hover:text-blue mr-8">Contact us</Link>
 
                 {User ? (
                   <>
