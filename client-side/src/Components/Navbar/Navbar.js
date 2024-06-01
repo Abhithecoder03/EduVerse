@@ -19,7 +19,7 @@ const Navbar = () => {
           </Box>
 
           <div className='list-none sm:flex hidden justify-end items-center flex-1 ml-25" ' >
-            <a className="text-lg hover:text-blue mr-10  " href="">About us</a>
+            <a className="text-lg hover:text-blue mr-10  " href="/about-us">About us</a>
             <Link
               to="/blog"
               className="text-lg hover:text-blue mr-10  "

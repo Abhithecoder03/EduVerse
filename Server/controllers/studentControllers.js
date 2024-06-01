@@ -6,7 +6,7 @@ const generateToken=require("./token")
 const registerStudent=asyncHandler(async(req,res)=>{
     const {fName,lName,email,userName,password,pic}=req.body;
 
-    console.log("rrr",req.body)
+    console.log(req.body)
 
     if(!fName||!lName||!email||!password||!userName){
         res.status(400);
@@ -34,6 +34,7 @@ const registerStudent=asyncHandler(async(req,res)=>{
     if(student){
         res.status(201).json({
             _id:student._id,
+            fName:student.fName,
             lName:student.lName,
             
             userName:student.userName,
@@ -60,16 +61,18 @@ const authStudent=asyncHandler(async(req,res)=>{
     if (userexists &&(await userexists.matchPassword(password))){
            res.json({
               _id:userexists._id,
-              name:userexists.name,
+              fname:userexists.fName,
+              lname:userexists.lName,
               email:userexists.email,
               password:userexists.password,
               pic:userexists.pic,
   
               token:generateToken(userexists._id)
            })
+           console.log("login succesfuuly")
     }
     else{
-      res.status(404);
+      res.status(401).json({ message: "Invalid email or password" });
       throw new Error("Email and password is not correct");
     }
 })

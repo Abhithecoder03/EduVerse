@@ -13,8 +13,11 @@ import StudentDashboard from "./Pages/StudentDashboard/StudentDashboard";
 import Profile from "./Pages/StudentDashboard/Profile/Profile";
 import Dashboard from "./Pages/StudentDashboard/Dashboard/Dashboard";
 import VideoCourses from "./Pages/StudentDashboard/VideoCourses/VideoCourses";
+import CoursePlaylist from "./Pages/StudentDashboard/VideoCourses/CoursePlaylist ";
 import Books from "./Pages/StudentDashboard/Books/Books";
 import Doubt from "./Pages/StudentDashboard/doubt/doubt";
+import ProtectedRoute from './ProtectedRoute';
+import AboutUs from "./Pages/AboutUs/AboutUs";
 const App = () => {
   return (
     <div className="w-screen h-screen flex flex-col">
@@ -24,16 +27,23 @@ const App = () => {
         <Route path="/" Component={Home} />
         <Route path="/signUp" Component={SignUp} />
         <Route path="/login" Component={Login} />
+        <Route element={<ProtectedRoute />}>
         <Route path="/Student" Component={StudentDashboard}>
           <Route path="/Student/profile" Component={Profile} />
           <Route path="/Student" Component={Dashboard} />
           <Route path="/Student/videoCourse" Component={VideoCourses} />
+        
+         
+          <Route path="/Student/videoCourse/:course" Component={CoursePlaylist} />
+      
           <Route path="/Student/books" Component={Books} />
           <Route path="/Student/doubts" Component={Doubt} />
+        </Route>
         </Route>
         <Route path="/termConsitions" Component={TermConditions} />
         <Route path="/privacy" Component={Privacy} />
         <Route path="/blog" Component={Blog} />
+        <Route path='/about-us' Component={AboutUs}/>
       </Routes>
     </div>
   );

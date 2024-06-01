@@ -40,15 +40,15 @@ const Chat = () => {
   };
 
   return (
-    <div className='bg-[#555] h-screen w-full  ml-10 mr-1 overflow-y-auto rounded-lg'>
+    <div className='bg-grey h-screen w-full overflow-y-auto rounded-lg'>
       <div className='grid w-full justify-center align-middle'>
         {messages.map((message, index) => (
           <React.Fragment key={index}>
             {message.type === 'user' ? (
               <img
-                src="https://i.ibb.co/37WzQCx/ck3.png" border="0"
+                src="/Assets/Expert/Designer.png" border="0"
                 alt="User"
-                className="inline-block mr-2 h-12 w-16 rounded-lg float-right"
+                className="inline-block h-20 w-20 rounded-lg float-right object-cover text-center"
               />
             ) : (
               <img
@@ -74,7 +74,7 @@ const Chat = () => {
         ))}
       </div>
       <div className='relative h-1/2 bottom-5'>
-        <div className="absolute inset-x-0 bottom-0 flex justify-center items-end">
+        <div className="flex flex-col absolute inset-x-0 bottom-0 justify-center">
           <textarea
             id="base-input"
             className="bg-[#444444] border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-[#666666] focus:border-[#555555] block w-3/5 p-2.5 dark:bg-[#444444] dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#444444] dark:focus:border-[#444444] overflow-y-auto relative"
@@ -82,8 +82,8 @@ const Chat = () => {
             onChange={(e) => setInput(e.target.value)}
           />
           <ArrowUpwardIcon
-            className="absolute  bg-red-500 bottom-10 right-20 transform translate-x-2/4 translate-y-1/4"
-            style={{ color: 'red' }}
+            className="absolute text-white bg-[#2EB8CB] transform translate-x-2/4 translate-y-1/4 r-0"
+            // style={{ color: '#fff' }}
             onClick={sendMessage}
           />
         </div>

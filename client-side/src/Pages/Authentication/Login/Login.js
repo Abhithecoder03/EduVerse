@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useEffect } from 'react';
 import {
   Button,
   CustomModal,
@@ -12,18 +12,40 @@ import {
   HStack,
   Radio,
   Checkbox,
+  Alert,
 } from "@chakra-ui/react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { resetError } from '../../../Redux/loginRedux'; // Import resetError action
 
+import {login} from '../../../Redux/apiCall'
 const Login = () => {
   const [toggle, setToggle] = useState(false);
   const [selectedOption, setSelectedOption] = useState("option1");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleOptionChange = () => {
-    setSelectedOption(!selectedOption);
+  const errorMessage = useSelector((state) => state.user.errorMessage);
+  const currentUser = useSelector((state) => state.user.currentUser);
+
+  useEffect(() => {
+    dispatch(resetError()); // Reset error on component mount
+  }, [dispatch]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("loginclick", email, password);
+    await login(dispatch, { email, password });
   };
 
+  useEffect(() => {
+    if (currentUser) {
+      navigate('/Student/profile');
+    }
+  }, [currentUser, navigate]);
   return (
     <div className="w-screen h-screen md:flex">
       {/* Left Side (Hidden on Small Screens) */}
@@ -48,6 +70,7 @@ const Login = () => {
         </h2>
 
         <div className="w-4/5 lg:w-1/2 pt-8 flex flex-col text-center justify-center p-4">
+        {errorMessage && <Alert status="error">{errorMessage}</Alert>}
           <FormControl isRequired>
             <FormLabel className="text-white">
               Username / Email Address
@@ -57,6 +80,7 @@ const Login = () => {
               placeholder="Enter Here..."
               className="placeholder-gray-600"
               bgColor="white"
+              onChange={(e)=>setEmail(e.target.value)}
             />
           </FormControl>
           <FormControl className="" mt={4}>
@@ -67,6 +91,7 @@ const Login = () => {
                 placeholder="******"
                 className="placeholder-gray-600"
                 bgColor="white"
+                onChange={(e)=>setPassword(e.target.value)}
               />
               <InputRightElement>
                 <Button bgColor="white" onClick={() => setToggle(!toggle)}>
@@ -83,8 +108,8 @@ const Login = () => {
             </a>
           </div>
 
-          <Button className="mt-6" bg="#FFE143">
-            Sign up
+          <Button onClick={handleSubmit}className="mt-6" bg="#FFE143">
+            Login
           </Button>
 
           <p className="hidden md:flex text-white mt-6 justify-center">Don’t Have an Account? </p>

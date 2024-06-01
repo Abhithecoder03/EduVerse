@@ -10,6 +10,7 @@ const BooksSearch = () => {
   const [books, setBooks] = useState([]);
 
   const searchBooks = async (searchTerm) => {
+    console.log(searchTerm)
     try {
       const response = await axios.get(
         `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(

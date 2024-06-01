@@ -9,13 +9,21 @@ const Search = ({ onSearch ,context}) => {
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
+    console.log(context)
     // onSearch(searchTerm);
     if (context === 'BooksSearch') {
       // Call function specific to BooksSearch
-      onSearch(searchTerm);}
+      onSearch(searchTerm);
+      console.log(searchTerm,"book")}
+      
+    
     else{
+      
       onSearch(searchTerm)
+      console.log(searchTerm,"video")
+      
     }
+    
 
   };
 
