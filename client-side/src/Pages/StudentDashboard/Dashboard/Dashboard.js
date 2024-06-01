@@ -131,21 +131,23 @@ const Dashboard = () => {
 
       {/* Recently Watched Videos Section */}
       <div className="flex justify-center mb-8">
+        <Link to='/Student/videoCourse/First'>
         <div className="flex flex-col w-72 p-1 items-center border bg-white mr-2 ">
           <img
             src="/Assets/VideoCourses/Computer.jpeg"
             alt=""
             className="w-96 h-42 object-contain rounded mr-"
           />
-          <p className="font-semibold">B.tech Second Year(CSE/IT)</p>
+          <p className="font-semibold">B.tech First Year(CSE/IT)</p>
         </div>
+        </Link>
         <div className="flex flex-col w-72 p-1 items-center border bg-white mr-2 ">
           <img
             src="/Assets/VideoCourses/Computer.jpeg"
             alt=""
             className="w-96 h-42 object-fit rounded"
           />
-          <p className="font-semibold">B.tech Third Year(CSE/IT)</p>
+          <p className="font-semibold">B.tech Second Year(CSE/IT)</p>
         </div>
       </div>
 

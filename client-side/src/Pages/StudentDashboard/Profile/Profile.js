@@ -4,8 +4,12 @@ import { Image } from "@chakra-ui/react";
 import PersonalInfo from "./PersonalInfo";
 import CommunicationDetails from "./CommunicationDetails";
 import SocialLinks from "./SocialLinks";
+import { useDispatch, useSelector } from "react-redux";
 const Profile = () => {
   const [activeItem, setActiveItem] = useState(0);
+
+  const user = useSelector((state) => state.user.currentUser);
+
 
   const handleItemClick = (index) => {
     setActiveItem(index);
@@ -26,7 +30,7 @@ const Profile = () => {
                             Welcome back,
                         </span>
                         <span className='text-xl my-2 font-semibold text-center mt-2'>
-                            @userName
+                            {user.fname} {user.lname}
                         </span>
                     </div>
                     <div className='mt-2 flex justify-center' style={{ position: 'relative', textAlign: 'center' }}>
