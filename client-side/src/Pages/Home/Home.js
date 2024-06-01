@@ -93,11 +93,11 @@ const Home = () => {
                 experts.
               </p>
               <div className="flex flex-row font-semibold text-sm">
-                <a
+                <Link to="/Student/doubts"
                   className="bg-yellow text-black px-4 py-3 rounded-lg hover:bg-yellow-dark hover:text-white"
-                  href="#">
+                >
                   Doubt Solve
-                </a>
+                </Link>
               </div>
             </div>
           </div>
