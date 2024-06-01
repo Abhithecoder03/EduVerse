@@ -35,7 +35,7 @@ const VideoCourses = () => {
                 <p className="font-semibold">B.tech First Year(CSE/IT)</p>
               </div>
               </Link>
-
+              <Link to="/Student/videoCourse/Second">
               <div className="flex flex-col w-72 p-1 items-center border bg-white mr-2 ">
                 <img
                   src="/Assets/VideoCourses/Computer.jpeg"
@@ -44,6 +44,7 @@ const VideoCourses = () => {
                 />
                 <p className="font-semibold">B.tech Second Year(CSE/IT)</p>
               </div>
+              </Link>
               <div className="flex flex-col w-72 p-1 items-center border bg-white mr-2 ">
                 <img
                   src="/Assets/VideoCourses/Computer.jpeg"

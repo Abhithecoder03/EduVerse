@@ -1,30 +1,32 @@
 import EditIcon from "@mui/icons-material/Edit";
 import { Save } from "@mui/icons-material";
+import { useDispatch, useSelector } from "react-redux";
 const PersonalInfo = () => {
+    const user = useSelector((state) => state.user.currentUser);
 
-
+    
     return (<div>
         <form action="">
             <div className="left flex flex-col h-full sm:w-screen md:w-full">
                 <div className="left flex flex-col md:flex-row justify-center align-middle">
                     <div class="mb-6 w-full md:w-1/2">
                         <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">First Name</label>
-                        <input type="text" id="base-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                        <input type="text" id="base-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" value={user.fname} readOnly/>
                     </div>
                     <div class=" md:ml-20 mb-6 w-full md:w-1/2">
                         <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Last Name</label>
-                        <input type="text" id="base-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                        <input type="text" id="base-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"  value={user.lname} readOnly/>
                     </div>
 
                 </div>
                 <div className="left flex flex-col md:flex-row">
                     <div class="mb-6 w-full md:w-1/2">
                         <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Mobile Number</label>
-                        <input type="text" id="base-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                        <input type="text" id="base-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"  value="987654321" readOnly/>
                     </div>
                     <div class=" md:ml-20 mb-6 w-full md:w-1/2">
                         <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Email</label>
-                        <input type="text" id="base-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                        <input type="text" id="base-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"  value={user.email} readOnly/>
                     </div>
 
                 </div>
@@ -41,7 +43,7 @@ const PersonalInfo = () => {
                     </div>
                     <div class=" md:ml-20 mb-6 w-full md:w-1/2">
                         <label for="base-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">D.O.B</label>
-                        <input type="text" id="base-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                        <input type="text" id="base-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" value="31-3-2000" />
 
                     </div>
 
