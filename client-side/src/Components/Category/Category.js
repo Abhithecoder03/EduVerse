@@ -8,6 +8,7 @@ const Category = ({ searchBooks ,context}) => {
     if (context === 'BooksSearch') {
       // Call function specific to BooksSearch
       searchBooks(category);}
+      
     else{
       searchBooks(category)
     }

@@ -30,9 +30,7 @@ const StudentModel = mongoose.Schema(
             required: [true, 'please enter an valid email pass'],
             minlength: [5, 'min pass length is 5 charter']
         },
-        pic: {
-            type: String, required: true, default: "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
-        }
+        
     }, {
     timestamps: true
 }
