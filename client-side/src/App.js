@@ -16,6 +16,8 @@ import VideoCourses from "./Pages/StudentDashboard/VideoCourses/VideoCourses";
 import Books from "./Pages/StudentDashboard/Books/Books";
 import Doubt from "./Pages/StudentDashboard/doubt/doubt";
 import NewStory from "./Pages/Blog/NewStory";
+import ContactUs from "./Pages/ContactUs/Contactus";
+
 const App = () => {
   return (
     <div className="w-screen h-screen flex flex-col">
@@ -25,6 +27,8 @@ const App = () => {
         <Route path="/" Component={Home} />
         <Route path="/signUp" Component={SignUp} />
         <Route path="/login" Component={Login} />
+        <Route path="/ContactUs" Component={ContactUs} />
+       
         <Route path="/Student" Component={StudentDashboard}>
           <Route path="/Student/profile" Component={Profile} />
           <Route path="/Student" Component={Dashboard} />

@@ -18,6 +18,7 @@
     "clipboard": "^2.0.11",
     "colors": "^1.4.0",
     "framer-motion": "^10.18.0",
+    "google-map-react": "^2.2.1",
     "os-browserify": "^0.3.0",
     "react": "^18.2.0",
     "react-copy-to-clipboard": "^5.1.0",
