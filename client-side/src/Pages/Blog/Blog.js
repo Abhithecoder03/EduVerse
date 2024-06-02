@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Category from "../../Components/Category/Category";
 import {
   AccountCircle,
@@ -6,289 +6,90 @@ import {
   Comment,
   FiberManualRecord,
 } from "@mui/icons-material";
-
+import { Link } from "react-router-dom";
+import axios from "axios";
 const Blog = () => {
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/all-blogs");
+        setBlogs(response.data);
+
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
+  console.log(blogs);
   return (
     <div className="flex bg-grey overflow-hidden">
       <div className="w-full flex flex-col lg:flex flex-col w-2/3 h-full border-r-2 border-gray-400 overflow-y-auto">
         <div className="flex w-full justify-center">
           <Category />
         </div>
-        <div className="flex w-full mb-4 justify-center">
-          <div className="flex w-full md:w-4/5 border-b-2 border-gray-400">
-            <div className="flex flex-col w-2/3 md:w-3/4">
-              <div className="flex p-4 items-center">
-                <span className="mr-4">
-                  <AccountCircle sx={{ fontSize: 40 }} className="" />
-                </span>
-                <span className="text-sm mr-2 line-clamp-2 truncate md:text-base mr-4 align-middle">Tony Stark</span>
-                <span className="hidden md:block mr-4">
-                  <FiberManualRecord sx={{ fontSize: 12 }} />
-                </span>
-                <span className="hidden md:block text-base mr-4">Updated 2h ago</span>
-              </div>
-              <div className="text-sm md:text-base px-4 py-2 ">
-                <h4>
-                  Advice From a Software Engineer With 8 Years of Experience.
-                </h4>
-              </div>
-              <div className="hidden md:block px-4 py-2">
-                <p>
-                  Practical tips for those who want to advance in their careers
-                  — Hello, and welcome! My name is Benoit. I have been a
-                  software engineer for
-                </p>
-              </div>
-              <div className="flex justify-between px-4 py-2">
-                <div className="flex">
-                  <button className="text-sm truncate md:text-base bg-yellow p-2 rounded-full text-center font-semibold mr-4">
-                    Carrer Advice
-                  </button>
-                  <span className="hidden md:block mr-4 pt-2">Time Read</span>
-                  <span className="hidden md:block mr-4 pt-2">
+        {blogs && blogs.map((blog) => (
+        
+          <div className="flex w-full mb-4 justify-center">
+            
+            <div className="flex w-full md:w-4/5 border-b-2 border-gray-400">
+              <div className="flex flex-col w-2/3 md:w-3/4">
+                <div className="flex p-4 items-center">
+                  <span className="mr-4">
+                    <AccountCircle sx={{ fontSize: 40 }} className="" />
+                  </span>
+                  <span className="text-sm mr-2 line-clamp-2 truncate md:text-base mr-4 align-middle">{blog.user.fName}</span>
+                  <span className="hidden md:block mr-4">
                     <FiberManualRecord sx={{ fontSize: 12 }} />
                   </span>
-                  <span className="hidden md:block mr-4 pt-2">Selected for you</span>
+                  <span className="hidden md:block text-base mr-4">Updated At {new Date(blog.updatedAt).toDateString()}</span>
                 </div>
-                <div className="flex">
-                  <span className="mr-4 pt-2">
-                    <Comment />
-                  </span>
-                  <span className="mr-4 pt-2">
-                    <BookmarkBorder />
-                  </span>
+                <div className="text-sm md:text-base px-4 py-2 ">
+                  <h4>
+                    {blog.tittle}
+                  </h4>
                 </div>
-              </div>
-            </div>
-            <div className="flex w1/3 md:w-1/4 items-center">
-              <img
-                src="https://media.istockphoto.com/id/1189860501/photo/traveler-with-a-backpack-standing-on-a-mountain-peak-above-clouds-3d-render-illustration.jpg?s=1024x1024&w=is&k=20&c=Qt5zlTdkGoXp2S9hkB2Nu-OiY_Q-uzNhLbxvRWPrO6o="
-                className="w-36 h-auto md:w-48 md:h-40 p-4 object-fit"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-        <div className="flex w-full mb-4 justify-center">
-          <div className="flex w-full md:w-4/5 border-b-2 border-gray-400">
-            <div className="flex flex-col w-2/3 md:w-3/4">
-              <div className="flex p-4 items-center">
-                <span className="mr-4">
-                  <AccountCircle sx={{ fontSize: 40 }} className="" />
-                </span>
-                <span className="text-sm mr-2 line-clamp-2 truncate md:text-base mr-4 align-middle">Tony Stark</span>
-                <span className="hidden md:block mr-4">
-                  <FiberManualRecord sx={{ fontSize: 12 }} />
-                </span>
-                <span className="hidden md:block text-base mr-4">Updated 2h ago</span>
-              </div>
-              <div className="text-sm md:text-base px-4 py-2 ">
-                <h4>
-                  Advice From a Software Engineer With 8 Years of Experience.
-                </h4>
-              </div>
-              <div className="hidden md:block px-4 py-2">
-                <p>
-                  Practical tips for those who want to advance in their careers
-                  — Hello, and welcome! My name is Benoit. I have been a
-                  software engineer for
-                </p>
-              </div>
-              <div className="flex justify-between px-4 py-2">
-                <div className="flex">
-                  <button className="text-sm truncate md:text-base bg-yellow p-2 rounded-full text-center font-semibold mr-4">
-                    Carrer Advice
-                  </button>
-                  <span className="hidden md:block mr-4 pt-2">Time Read</span>
-                  <span className="hidden md:block mr-4 pt-2">
-                    <FiberManualRecord sx={{ fontSize: 12 }} />
-                  </span>
-                  <span className="hidden md:block mr-4 pt-2">Selected for you</span>
+                <div className="hidden md:block px-4 py-2">
+                  <p>
+                    {blog.description}
+                  </p>
                 </div>
-                <div className="flex">
-                  <span className="mr-4 pt-2">
-                    <Comment />
-                  </span>
-                  <span className="mr-4 pt-2">
-                    <BookmarkBorder />
-                  </span>
+                <div className="flex justify-between px-4 py-2">
+                  <div className="flex">
+                    <button className="text-sm truncate md:text-base bg-yellow p-2 rounded-full text-center font-semibold mr-4">
+                      Carrer Advice
+                    </button>
+                    <span className="hidden md:block mr-4 pt-2">Time Read</span>
+                    <span className="hidden md:block mr-4 pt-2">
+                      <FiberManualRecord sx={{ fontSize: 12 }} />
+                    </span>
+                    <span className="hidden md:block mr-4 pt-2">Selected for you</span>
+                  </div>
+                  <div className="flex">
+                    <span className="mr-4 pt-2">
+                      <Comment />
+                    </span>
+                    <span className="mr-4 pt-2">
+                      <BookmarkBorder />
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="flex w1/3 md:w-1/4 items-center">
-              <img
-                src="https://media.istockphoto.com/id/1189860501/photo/traveler-with-a-backpack-standing-on-a-mountain-peak-above-clouds-3d-render-illustration.jpg?s=1024x1024&w=is&k=20&c=Qt5zlTdkGoXp2S9hkB2Nu-OiY_Q-uzNhLbxvRWPrO6o="
-                className="w-36 h-auto md:w-48 md:h-40 p-4 object-fit"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-        <div className="flex w-full mb-4 justify-center">
-          <div className="flex w-full md:w-4/5 border-b-2 border-gray-400">
-            <div className="flex flex-col w-2/3 md:w-3/4">
-              <div className="flex p-4 items-center">
-                <span className="mr-4">
-                  <AccountCircle sx={{ fontSize: 40 }} className="" />
-                </span>
-                <span className="text-sm mr-2 line-clamp-2 truncate md:text-base mr-4 align-middle">Tony Stark</span>
-                <span className="hidden md:block mr-4">
-                  <FiberManualRecord sx={{ fontSize: 12 }} />
-                </span>
-                <span className="hidden md:block text-base mr-4">Updated 2h ago</span>
-              </div>
-              <div className="text-sm md:text-base px-4 py-2 ">
-                <h4>
-                  Advice From a Software Engineer With 8 Years of Experience.
-                </h4>
-              </div>
-              <div className="hidden md:block px-4 py-2">
-                <p>
-                  Practical tips for those who want to advance in their careers
-                  — Hello, and welcome! My name is Benoit. I have been a
-                  software engineer for
-                </p>
-              </div>
-              <div className="flex justify-between px-4 py-2">
-                <div className="flex">
-                  <button className="text-sm truncate md:text-base bg-yellow p-2 rounded-full text-center font-semibold mr-4">
-                    Carrer Advice
-                  </button>
-                  <span className="hidden md:block mr-4 pt-2">Time Read</span>
-                  <span className="hidden md:block mr-4 pt-2">
-                    <FiberManualRecord sx={{ fontSize: 12 }} />
-                  </span>
-                  <span className="hidden md:block mr-4 pt-2">Selected for you</span>
-                </div>
-                <div className="flex">
-                  <span className="mr-4 pt-2">
-                    <Comment />
-                  </span>
-                  <span className="mr-4 pt-2">
-                    <BookmarkBorder />
-                  </span>
-                </div>
+              <div className="flex w1/3 md:w-1/4 items-center">
+                <img
+                  src="https://media.istockphoto.com/id/1189860501/photo/traveler-with-a-backpack-standing-on-a-mountain-peak-above-clouds-3d-render-illustration.jpg?s=1024x1024&w=is&k=20&c=Qt5zlTdkGoXp2S9hkB2Nu-OiY_Q-uzNhLbxvRWPrO6o="
+                  className="w-36 h-auto md:w-48 md:h-40 p-4 object-fit"
+                  alt=""
+                />
               </div>
             </div>
-            <div className="flex w1/3 md:w-1/4 items-center">
-              <img
-                src="https://media.istockphoto.com/id/1189860501/photo/traveler-with-a-backpack-standing-on-a-mountain-peak-above-clouds-3d-render-illustration.jpg?s=1024x1024&w=is&k=20&c=Qt5zlTdkGoXp2S9hkB2Nu-OiY_Q-uzNhLbxvRWPrO6o="
-                className="w-36 h-auto md:w-48 md:h-40 p-4 object-fit"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-        <div className="flex w-full mb-4 justify-center">
-          <div className="flex w-full md:w-4/5 border-b-2 border-gray-400">
-            <div className="flex flex-col w-2/3 md:w-3/4">
-              <div className="flex p-4 items-center">
-                <span className="mr-4">
-                  <AccountCircle sx={{ fontSize: 40 }} className="" />
-                </span>
-                <span className="text-sm mr-2 line-clamp-2 truncate md:text-base mr-4 align-middle">Tony Stark</span>
-                <span className="hidden md:block mr-4">
-                  <FiberManualRecord sx={{ fontSize: 12 }} />
-                </span>
-                <span className="hidden md:block text-base mr-4">Updated 2h ago</span>
-              </div>
-              <div className="text-sm md:text-base px-4 py-2 ">
-                <h4>
-                  Advice From a Software Engineer With 8 Years of Experience.
-                </h4>
-              </div>
-              <div className="hidden md:block px-4 py-2">
-                <p>
-                  Practical tips for those who want to advance in their careers
-                  — Hello, and welcome! My name is Benoit. I have been a
-                  software engineer for
-                </p>
-              </div>
-              <div className="flex justify-between px-4 py-2">
-                <div className="flex">
-                  <button className="text-sm truncate md:text-base bg-yellow p-2 rounded-full text-center font-semibold mr-4">
-                    Carrer Advice
-                  </button>
-                  <span className="hidden md:block mr-4 pt-2">Time Read</span>
-                  <span className="hidden md:block mr-4 pt-2">
-                    <FiberManualRecord sx={{ fontSize: 12 }} />
-                  </span>
-                  <span className="hidden md:block mr-4 pt-2">Selected for you</span>
-                </div>
-                <div className="flex">
-                  <span className="mr-4 pt-2">
-                    <Comment />
-                  </span>
-                  <span className="mr-4 pt-2">
-                    <BookmarkBorder />
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div className="flex w1/3 md:w-1/4 items-center">
-              <img
-                src="https://media.istockphoto.com/id/1189860501/photo/traveler-with-a-backpack-standing-on-a-mountain-peak-above-clouds-3d-render-illustration.jpg?s=1024x1024&w=is&k=20&c=Qt5zlTdkGoXp2S9hkB2Nu-OiY_Q-uzNhLbxvRWPrO6o="
-                className="w-36 h-auto md:w-48 md:h-40 p-4 object-fit"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-        <div className="flex w-full mb-4 justify-center">
-          <div className="flex w-full md:w-4/5 border-b-2 border-gray-400">
-            <div className="flex flex-col w-2/3 md:w-3/4">
-              <div className="flex p-4 items-center">
-                <span className="mr-4">
-                  <AccountCircle sx={{ fontSize: 40 }} className="" />
-                </span>
-                <span className="text-sm mr-2 line-clamp-2 truncate md:text-base mr-4 align-middle">Tony Stark</span>
-                <span className="hidden md:block mr-4">
-                  <FiberManualRecord sx={{ fontSize: 12 }} />
-                </span>
-                <span className="hidden md:block text-base mr-4">Updated 2h ago</span>
-              </div>
-              <div className="text-sm md:text-base px-4 py-2 ">
-                <h4>
-                  Advice From a Software Engineer With 8 Years of Experience.
-                </h4>
-              </div>
-              <div className="hidden md:block px-4 py-2">
-                <p>
-                  Practical tips for those who want to advance in their careers
-                  — Hello, and welcome! My name is Benoit. I have been a
-                  software engineer for
-                </p>
-              </div>
-              <div className="flex justify-between px-4 py-2">
-                <div className="flex">
-                  <button className="text-sm truncate md:text-base bg-yellow p-2 rounded-full text-center font-semibold mr-4">
-                    Carrer Advice
-                  </button>
-                  <span className="hidden md:block mr-4 pt-2">Time Read</span>
-                  <span className="hidden md:block mr-4 pt-2">
-                    <FiberManualRecord sx={{ fontSize: 12 }} />
-                  </span>
-                  <span className="hidden md:block mr-4 pt-2">Selected for you</span>
-                </div>
-                <div className="flex">
-                  <span className="mr-4 pt-2">
-                    <Comment />
-                  </span>
-                  <span className="mr-4 pt-2">
-                    <BookmarkBorder />
-                  </span>
-                </div>
-              </div>
-            </div>
-            <div className="flex w1/3 md:w-1/4 items-center">
-              <img
-                src="https://media.istockphoto.com/id/1189860501/photo/traveler-with-a-backpack-standing-on-a-mountain-peak-above-clouds-3d-render-illustration.jpg?s=1024x1024&w=is&k=20&c=Qt5zlTdkGoXp2S9hkB2Nu-OiY_Q-uzNhLbxvRWPrO6o="
-                className="w-36 h-auto md:w-48 md:h-40 p-4 object-fit"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
+          </div>))}
+
+
+
       </div>
       <div className="hidden lg:flex flex-col w-1/3 h-screen">
         <div className="w-full">
@@ -336,9 +137,11 @@ const Blog = () => {
               Explore Your Passion: Dive into Blogging. Share ideas. Inspire
               Others. Start Your Writing Journey Now!{" "}
             </p>
-            <button className="bg-yellow p-2 rounded-full text-center ml-4 my-4 w-28 font-semibold">
-              Write here
-            </button>
+            <Link to='/blog/newStory'>
+              <button className="bg-yellow p-2 rounded-full text-center ml-4 my-4 w-28 font-semibold">
+                Write here
+              </button>
+            </Link>
           </div>
         </div>
         <div className="w-full mt-4">

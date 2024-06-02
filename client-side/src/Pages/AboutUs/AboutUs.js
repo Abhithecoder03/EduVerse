@@ -73,24 +73,24 @@ const AboutUs = () => {
             <h2 className="text-3xl font-semibold ">Meet the Founders</h2>
             <div className="mt-6 flex justify-around ">
               <div className="flex items-center flex-col text-center ">
-                <img className="w-24 h-24 rounded-lg" src="path/to/abhishek.jpg" alt="Abhishek Chaurasia" />
+                <img className="w-80 h-96 rounded-lg mb-2 object-cover" src="pic.jpg" alt="Abhishek Chaurasia" />
                 <div className="ml-4">
-                  <h3 className="text-xl font-medium text-gray-900">Abhishek Chaurasia</h3>
-                  <p className="text-gray-800">Founder</p>
+                  <h3 className="text-xl font-medium text-white">Abhishek Chaurasia</h3>
+                  <p className="text-white">Founder</p>
                 </div>
               </div>
               <div className="flex items-center flex-col text-center">
-                <img className="w-24 h-24 rounded-full" src="path/to/akhand.jpg" alt="Akhand Pratap Singh" />
+                <img className="w-80 h-96 rounded-lg mb-2 object-cover" src="akpic.jpg" alt="Akhand Pratap Singh" />
                 <div className="ml-4">
-                  <h3 className="text-xl font-medium text-gray-900">Akhand Pratap Singh</h3>
-                  <p className="text-gray-800">Founder</p>
+                  <h3 className="text-xl font-medium text-white">Akhand Pratap Singh</h3>
+                  <p className="text-white">Founder</p>
                 </div>
               </div>
               <div className="flex items-center flex-col text-center">
-                <img className="w-24 h-24 rounded-full" src="path/to/prateek.jpg" alt="Prateek Mishra" />
+                <img className="w-80 h-96 rounded-lg object-cover" src="pkpic.jpeg" alt="Prateek Mishra" />
                 <div className="ml-4">
-                  <h3 className="text-xl font-medium text-gray-900">Prateek Mishra</h3>
-                  <p className="text-gray-800">Founder</p>
+                  <h3 className="text-xl font-medium text-white">Prateek Mishra</h3>
+                  <p className="text-white">Founder</p>
                 </div>
               </div>
             </div>

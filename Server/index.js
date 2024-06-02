@@ -2,7 +2,7 @@ const express = require('express');
 
 const mongoose= require('mongoose');
 const cors = require('cors')
-
+const blogRoutes = require('./routes/BlogRoutes/BlogRoutes');
 //exportion routes//
 const StudentRoutes=require('./routes/StudentRoutes')
 
@@ -24,3 +24,4 @@ mongoose.connect(mdburl, { useNewUrlParser: true, useUnifiedTopology: true })
   .catch((err) => console.log(err));
 
 app.use(StudentRoutes)
+app.use(blogRoutes);
