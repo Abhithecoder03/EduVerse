@@ -77,6 +77,7 @@ const AboutUs = () => {
                 <div className="ml-4">
                   <h3 className="text-xl font-medium text-white">Abhishek Chaurasia</h3>
                   <p className="text-white">Founder</p>
+                  <p className="text-white">SDE at Aspireit</p>
                 </div>
               </div>
               <div className="flex items-center flex-col text-center">
@@ -84,6 +85,7 @@ const AboutUs = () => {
                 <div className="ml-4">
                   <h3 className="text-xl font-medium text-white">Akhand Pratap Singh</h3>
                   <p className="text-white">Founder</p>
+                  <p className="text-white">SDE at IfStatic</p>
                 </div>
               </div>
               <div className="flex items-center flex-col text-center">
@@ -91,6 +93,7 @@ const AboutUs = () => {
                 <div className="ml-4">
                   <h3 className="text-xl font-medium text-white">Prateek Mishra</h3>
                   <p className="text-white">Founder</p>
+                  <p className="text-white">SDE at IfStatic</p>
                 </div>
               </div>
             </div>
