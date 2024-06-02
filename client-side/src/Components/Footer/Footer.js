@@ -9,9 +9,10 @@ import {
   WhatsApp,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
 const Footer = () => {
-
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.currentUser);
   return (
     <div className="flex flex-col md:flex md:flex-row mb-0 w-full md:h-384 bg-black justify-between text-white p-4">
       <div className="flex justify-center items-center md:flex flex-col mt-4 mb-12 md:mx-8">
@@ -39,8 +40,14 @@ const Footer = () => {
           <div className="flex flex-col">
             <Link to="/">Home</Link>
             <Link to="about-us">About us</Link>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Sign up</Link>
+            {user?(
+             <Link>Hello! </Link>
+            ): (<Link to="/login">LogIn</Link>)}
+           
+            {user?(
+             <Link to="/student/profile">{user.fname}</Link>
+            ): (<Link to="/signup">Sign up</Link>)}
+            
 
           </div>
           <div className="flex flex-col">
