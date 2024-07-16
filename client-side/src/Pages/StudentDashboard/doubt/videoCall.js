@@ -5,10 +5,12 @@ const VideoPage=()=>{
     const {id}=useParams();
     console.log(id)
     const roomID=id
+    const appid=process.env.REACT_APP_appID
+    const serversecret=process.env.REACT_APP_serverSecret
     let myMeeting = async (element) => {
    // generate Kit Token
-    const appID =1801154984 ;
-    const serverSecret = "32d2479b90ae81bde0b78e8d92d35c7b";
+    const appID =appid ;
+    const serverSecret = serversecret;
     const kitToken =  ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, roomID,  Date.now().toString(), "Abhishek");
 
   

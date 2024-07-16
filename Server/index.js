@@ -6,13 +6,14 @@ const blogRoutes = require('./routes/BlogRoutes/BlogRoutes');
 //exportion routes//
 const StudentRoutes=require('./routes/StudentRoutes')
 const DoubtsRoutes=require('./routes/Doubts/DoubtsRoute')
+require('dotenv').config()
 
 const app=express()
 app.use(express.json())
 app.use(cors())
 
 const port = 5000;
-const mdburl='mongodb+srv://Abhidemo03:9696858107@cluster0.jf2t9qo.mongodb.net/EduVerse?retryWrites=true&w=majority';
+const mdburl=process.env.MONGODBURL;
 
 
 
