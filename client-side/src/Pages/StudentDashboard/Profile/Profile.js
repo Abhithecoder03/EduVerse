@@ -30,7 +30,7 @@ const Profile = () => {
                             Welcome back,
                         </span>
                         <span className='text-xl my-2 font-semibold text-center mt-2'>
-                            {user.fname} {user.lname}
+                            {user.fname} {user.lname} {user.role}
                         </span>
                     </div>
                     <div className='mt-2 flex justify-center' style={{ position: 'relative', textAlign: 'center' }}>

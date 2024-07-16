@@ -21,6 +21,10 @@ import AboutUs from "./Pages/AboutUs/AboutUs";
 import NewStory from "./Pages/Blog/NewStory";
 import ContactUs from "./Pages/ContactUs/Contactus";
 import BlogDetail from "./Pages/Blog/BlogDetail";
+import DoubtChat from "./Pages/StudentDashboard/doubt/sstudentdoubtsection";
+import Solver from "./Pages/StudentDashboard/doubt/solver"
+import VideoPage from "./Pages/StudentDashboard/doubt/videoCall"
+
 
 const App = () => {
   return (
@@ -38,7 +42,9 @@ const App = () => {
             <Route path="/Student/profile" Component={Profile} />
             <Route path="/Student" Component={Dashboard} />
             <Route path="/Student/videoCourse" Component={VideoCourses} />
-
+            <Route path="/Student/doubt/:id" Component={DoubtChat}/>
+            <Route path="/Student/doubts/solver" Component={Solver}/>
+            <Route path="/Student/doubt/video/:id" Component={VideoPage}/>
             <Route
               path="/Student/videoCourse/:course"
               Component={CoursePlaylist}

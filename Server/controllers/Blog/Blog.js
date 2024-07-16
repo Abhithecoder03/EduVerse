@@ -24,7 +24,7 @@ exports.getAllBlogs = async (req, res) => {
 // Fetch a single blog by ID
 exports.getBlogById = async (req, res) => {
     try {
-        const blog = await Blog.findById(req.params.id).populate('user', 'name email');
+        const blog = await Blog.findById(req.params.id).populate('user');
         if (!blog) {
             return res.status(404).json({ message: 'Blog not found' });
         }

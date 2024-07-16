@@ -5,6 +5,7 @@ const cors = require('cors')
 const blogRoutes = require('./routes/BlogRoutes/BlogRoutes');
 //exportion routes//
 const StudentRoutes=require('./routes/StudentRoutes')
+const DoubtsRoutes=require('./routes/Doubts/DoubtsRoute')
 
 const app=express()
 app.use(express.json())
@@ -25,3 +26,4 @@ mongoose.connect(mdburl, { useNewUrlParser: true, useUnifiedTopology: true })
 
 app.use(StudentRoutes)
 app.use(blogRoutes);
+app.use(DoubtsRoutes)

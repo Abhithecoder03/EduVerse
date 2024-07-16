@@ -32,7 +32,7 @@ const Blog = () => {
           <Category />
         </div>
         {blogs && blogs.map((blog) => (
-        
+        <Link to={`/blog/${blog._id}`}>
           <div className="flex w-full mb-4 justify-center">
             
             <div className="flex w-full md:w-4/5 border-b-2 border-gray-400">
@@ -86,7 +86,8 @@ const Blog = () => {
                 />
               </div>
             </div>
-          </div>))}
+          </div>
+        </Link>))}
 
 
 

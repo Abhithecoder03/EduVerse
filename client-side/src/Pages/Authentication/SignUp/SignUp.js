@@ -46,14 +46,15 @@ function InitialFocus() {
   const [userName,setUserName]=useState('')
   const [email,setEmail]=useState('')
   const [password,setPassword]=useState('')
+  const [role,setRole]=useState('')
   const navigate=useNavigate()
   const dispatch = useDispatch()
 
   //
   const handleRegister=(e)=>{
-    console.log("Clicked");
+    console.log("Clicked",role);
     e.preventDefault();
-    register(dispatch,{fName,lName,userName,email,password})
+    register(dispatch,{fName,lName,userName,email,password,role})
     navigate('/Student/profile');
     
   }
@@ -82,7 +83,10 @@ function InitialFocus() {
                 bg="#2EB8CB"
                 color="white"
                 _hover={{ bg: "#FFE143", color: "#ffff" }}
-                onClick={onOpen2}
+                onClick={() => {
+                  onOpen2();
+                  setRole("teacher");
+                }}
               >
                 Sign up
               </Button>
@@ -106,7 +110,10 @@ function InitialFocus() {
                 className=" mb-4"
                 bg="#FFE143"
                 _hover={{ bg: "#2EB8CB", color: "#ffff" }}
-                onClick={onOpen1}
+                onClick={() => {
+                  onOpen1();
+                  setRole("studnet");
+                }}
               >
                 Sign up
               </Button>
@@ -265,22 +272,25 @@ function InitialFocus() {
                     ref={initialRef}
                     type="name"
                     placeholder="Enter Here..."
+                    onChange={(e)=>setFname(e.target.value)}
                   />
                 </FormControl>
 
                 <FormControl className="mx-2">
                   <FormLabel>Last name</FormLabel>
-                  <Input type="name" placeholder="Enter Here..." />
+                  <Input type="name" placeholder="Enter Here..."  onChange={(e)=>setLname(e.target.value)} />
                 </FormControl>
               </div>
 
               <FormControl mt={4}>
                 <FormLabel>Username</FormLabel>
-                <Input type="name" placeholder="Enter Here..." />
+                <Input type="name" placeholder="Enter Here..." 
+                onChange={(e)=>setUserName(e.target.value)}/>
               </FormControl>
               <FormControl mt={4}>
                 <FormLabel>Email</FormLabel>
-                <Input type="email" placeholder="Enter Here..." />
+                <Input type="email" placeholder="Enter Here..." 
+                onChange={(e)=>setEmail(e.target.value)}/>
               </FormControl>
 
               <div className="flex">
@@ -290,6 +300,7 @@ function InitialFocus() {
                     <Input
                       type={toggle ? "text" : "password"}
                       placeholder="******"
+                      onChange={(e)=>setPassword(e.target.value)}
                     />
                     <InputRightElement>
                       <Button onClick={() => setToggle(!toggle)}>
@@ -336,7 +347,8 @@ function InitialFocus() {
                 className="w-full"
                 _hover={{ bg: "#2EB8CB", color: "#ffff" }}
                 bg="#FFE143"
-                onClick={console.log("object")}
+                
+                onClick={handleRegister}
               >
                 Continue
               </Button>

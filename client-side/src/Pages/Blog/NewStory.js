@@ -10,6 +10,7 @@ const NewStory = () => {
     const [content, setContent] = useState('');
     const user = useSelector((state) => state.user.currentUser);
     const navigate = useNavigate();
+    
 
     const handlePublish = async () => {
         if (!user) {
@@ -45,7 +46,7 @@ const NewStory = () => {
         <div className='flex justify-center bg-gray-100'>
             <div className='bg-white h-screen p-6 flex flex-col w-full max-w-2xl shadow-lg rounded-lg'>
                 <div className='flex justify-between items-center mb-6'>
-                    <div className='text-3xl font-bold text-gray-800'>OOO</div>
+                    <div className='text-3xl font-bold text-gray-800'><img src='/90.png' className='w-10 '></img></div>
                     <div className='text-gray-600'>
                         <span>Draft in {user?.fname}</span>
                     </div>

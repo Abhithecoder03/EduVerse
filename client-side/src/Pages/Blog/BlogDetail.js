@@ -1,11 +1,31 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 function BlogDetail() {
+  const { id } = useParams(); // Extract the blog ID from the URL parameters
+    const [blog, setBlog] = useState(null);
+    console.log(id,"id")
+    useEffect(() => {
+        const fetchBlog = async () => {
+            try {
+                const response = await axios.get(`http://localhost:5000/blog/${id}`);
+                setBlog(response.data);
+            } catch (error) {
+                console.error('Error fetching blog:', error);
+            }
+        };
+
+        fetchBlog();
+    }, []);
+    console.log(blog,"blog")
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center pt-20 mt-24">
-      <div className="max-w-2xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
+   <>
+   {blog &&
+    <div className="min-h-auto bg-gray-100 flex justify-center">
+      <div className="max-w-2xl mx-auto bg-white shadow-lg rounded-lg overflow-y-scroll">
         <div className="px-6 py-4">
-          <h1 className="text-3xl font-bold mb-4">4 <span className="text-gray-800">useState</span> Mistakes You Should Avoid in React <span className="text-red-600">🚫</span></h1>
+          <h1 className="text-3xl font-bold mb-4">{blog.tittle}</h1>
           <div className="flex items-center mb-4">
             <img
               className="w-10 h-10 rounded-full mr-4"
@@ -13,8 +33,8 @@ function BlogDetail() {
               alt="Author"
             />
             <div className="text-sm">
-              <p className="text-gray-900 leading-none">Gojo Babu</p>
-              <p className="text-gray-600">Jan 25, 2024</p>
+              <p className="text-gray-900 leading-none">{blog.user.fName}</p>
+              <p className="text-gray-600">{new Date(blog.updatedAt).toDateString()}</p>
             </div>
           </div>
           <div className="mb-4">
@@ -25,10 +45,9 @@ function BlogDetail() {
             />
           </div>
           <div>
-            <h2 className="text-2xl font-bold mb-2">Introduction</h2>
+            <h2 className="text-2xl font-bold mb-2">Description</h2>
             <p className="text-gray-700 text-base">
-              React.js has become a cornerstone of modern web development, with its unique approach to managing state within components. One common hook, <code className="bg-gray-200 rounded px-2 py-1">useState</code>, is fundamental but often misused. Understanding and avoiding these common mistakes is crucial for both beginners and experienced developers.
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta quaerat vero quibusdam et iusto aspernatur, sapiente maxime? Fuga id magnam nostrum obcaecati itaque quas qui, assumenda culpa enim autem possimus mollitia labore ipsum adipisci, animi, omnis dolores! Amet molestias aliquam, facilis quo asperiores ut nihil eius vel ipsa placeat optio dolores, quae esse at ipsam quod quam quibusdam quas accusamus nulla? Ipsum, repudiandae. Ratione aut laboriosam animi repudiandae fuga ea corrupti asperiores ex aliquam necessitatibus sapiente sint, maiores porro, suscipit nulla, culpa quidem tenetur? Labore repudiandae beatae atque amet est facere, veniam corporis animi accusantium culpa voluptatem, magni, voluptas eum?
+            {blog.description}
             </p>
           </div>
         </div>
@@ -39,6 +58,8 @@ function BlogDetail() {
         </div>
       </div>
     </div>
+   }
+    </>
   );
 }
 

@@ -12,86 +12,91 @@ import { PiVideo } from "react-icons/pi";
 import { LiaBookSolid } from "react-icons/lia";
 import { CiBookmarkPlus } from "react-icons/ci";
 import { Link } from "react-router-dom";
-
+import { TbMessageQuestion } from "react-icons/tb";
+import { useDispatch, useSelector } from "react-redux";
 
 export const Sidebar = () => {
+
   const [open, setOpen] = useState(false)
   const ref = useRef(null)
   useClickAway(ref, () => setOpen(false))
   const toggleSidebar = () => setOpen(prev => !prev)
-
+  
+  const user = useSelector((state) => state.user.currentUser);
+  const items = [
+    { title: 'Dashboard', Icon:MdOutlineDashboardCustomize , href: '/student' },
+    { title: 'Profile', Icon: BiUser, href: '/student/profile' },
+    { title: 'Books', Icon: LiaBookSolid, href: '/student/books' },
+    { title: 'Video Course', Icon: PiVideo, href: '/student/videoCourse' },
+    { title: 'Expert', Icon: HiOutlineChatBubbleBottomCenterText, href: '/Student/doubts' },
+    { title: 'Wishlist', Icon: CiBookmarkPlus, href: '#' },
+    { title: 'Doubt Solving', Icon: CiBookmarkPlus, href: '/Student/doubts/solver' , hideFor: 'studnet'},
+    { title: 'Ask Doubt', Icon: TbMessageQuestion, href: `/Student/doubt/${user._id}`, hideFor: 'teacher' },
+  ]
   return (
     <>
-      <button
-        onClick={toggleSidebar}
-        className="p-3 border-2"
-        aria-label="toggle sidebar"
-      >
-        <GiHamburgerMenu className='relative' />
-      </button>
-      <AnimatePresence mode="wait" initial={false}>
-        {open && (
-          <>
-            <motion.div
-              {...framerSidebarBackground}
-              aria-hidden="true"
-              className="fixed bottom-0 left-0 right-0 top-0 z-40 bg-[rgba(0,0,0,0.1)] backdrop-blur-sm"
-            ></motion.div>
-            <motion.div
-              {...framerSidebarPanel}
-              className="fixed top-0 bottom-0 left-0 z-50 w-full h-screen max-w-xs border-r-2 border-gray bg-white"
-              ref={ref}
-              aria-label="Sidebar"
-            >
-              <div className="flex items-center justify-between p-5 border-b-2 gray">
-                <Box display='flex' className='h-20 '>
-                  <Box bg='#FFFFFF' p={4} color='Black' className='flex justify-between items-center overflow-hidden'>
-                    <h1 className="text-2xl font-semibold text-black ml-2"> <span>Edu</span><span className='text-blue'>Verse</span> </h1>
-                  </Box>
+    <button
+      onClick={toggleSidebar}
+      className="p-3 border-2"
+      aria-label="toggle sidebar"
+    >
+      <GiHamburgerMenu className='relative' />
+    </button>
+    <AnimatePresence mode="wait" initial={false}>
+      {open && (
+        <>
+          <motion.div
+            {...framerSidebarBackground}
+            aria-hidden="true"
+            className="fixed bottom-0 left-0 right-0 top-0 z-40 bg-[rgba(0,0,0,0.1)] backdrop-blur-sm"
+          ></motion.div>
+          <motion.div
+            {...framerSidebarPanel}
+            className="fixed top-0 bottom-0 left-0 z-50 w-full h-screen max-w-xs border-r-2 border-gray bg-white"
+            ref={ref}
+            aria-label="Sidebar"
+          >
+            <div className="flex items-center justify-between p-5 border-b-2 gray">
+              <Box display='flex' className='h-20 '>
+                <Box bg='#FFFFFF' p={4} color='Black' className='flex justify-between items-center overflow-hidden'>
+                  <h1 className="text-2xl font-semibold text-black ml-2"> <span>Edu</span><span className='text-blue'>Verse</span> </h1>
                 </Box>
-                <button
-                  onClick={toggleSidebar}
-                  className="p-3 hover:text-blue border-2 border-gray rounded-xl"
-                  aria-label="close sidebar"
-                >
-                  <AiOutlineRollback />
-                </button>
-              </div>
-              <ul>
-                {items.map((item, idx) => {
-                  const { title, href, Icon } = item
-                  return (
-                    <li key={title}>
-                      <Link to={href}
-                        onClick={toggleSidebar}
-                        className="flex items-center justify-between gap-5 p-5 transition-all hover:text-blue  border-b-2 hover:bg-grey border-gray"
-                      >
-                        <motion.span {...framerText(idx)}>{title}</motion.span>
-                        <motion.div {...framerIcon}>
-                          <Icon className="text-2xl" />
-                        </motion.div>
-                      </Link>
-                    </li>
-
-                  )
-                })}
-              </ul>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
-    </>
+              </Box>
+              <button
+                onClick={toggleSidebar}
+                className="p-3 hover:text-blue border-2 border-gray rounded-xl"
+                aria-label="close sidebar"
+              >
+                <AiOutlineRollback />
+              </button>
+            </div>
+            <ul>
+              {items.filter(item => !(item.hideFor === user.role)).map((item, idx) => {
+                const { title, href, Icon } = item;
+                return (
+                  <li key={title}>
+                    <Link to={href}
+                      onClick={toggleSidebar}
+                      className={"flex items-center justify-between gap-5 p-5 transition-all hover:text-blue  border-b-2 hover:bg-grey border-gray"}
+                    >
+                      <motion.span {...framerText(idx)}>{title}</motion.span>
+                      <motion.div {...framerIcon}>
+                        <Icon className="text-2xl" />
+                      </motion.div>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
+  </>
   )
 }
 
-const items = [
-  { title: 'Dashboard', Icon:MdOutlineDashboardCustomize , href: '/student' },
-  { title: 'Profile', Icon: BiUser, href: '/student/profile' },
-  { title: 'Books', Icon: LiaBookSolid, href: '/student/books' },
-  { title: 'Video Course', Icon: PiVideo, href: '/student/videoCourse' },
-  { title: 'Expert', Icon: HiOutlineChatBubbleBottomCenterText, href: '/Student/doubts' },
-  { title: 'Wishlist', Icon: CiBookmarkPlus, href: '#' },
-]
+
 
 const framerSidebarBackground = {
   initial: { opacity: 0 },

@@ -4,7 +4,7 @@ const Student= require('../models/StudentModel')
 const generateToken=require("./token")
 
 const registerStudent=asyncHandler(async(req,res)=>{
-    const {fName,lName,email,userName,password,pic}=req.body;
+    const {fName,lName,email,userName,password,pic,role}=req.body;
 
     console.log(req.body)
 
@@ -28,7 +28,8 @@ const registerStudent=asyncHandler(async(req,res)=>{
         userName,
         email,
         password,
-        pic
+        pic,
+        role,
         
     })
     if(student){
@@ -41,6 +42,7 @@ const registerStudent=asyncHandler(async(req,res)=>{
             email:student.email,
             password:student.password,
             pic:student.pic,
+            role:student.role,
 
             token:generateToken(student._id)
         })
@@ -66,6 +68,7 @@ const authStudent=asyncHandler(async(req,res)=>{
               email:userexists.email,
               password:userexists.password,
               pic:userexists.pic,
+              role:userexists.role,
   
               token:generateToken(userexists._id)
            })

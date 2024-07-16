@@ -9,6 +9,6 @@ router.post('/new-blog', blogController.createBlog);
 router.get('/all-blogs', blogController.getAllBlogs);
 
 // Route to fetch a single blog by ID
-router.get('/:id', blogController.getBlogById);
+router.get('/blog/:id', blogController.getBlogById);
 
 module.exports = router;

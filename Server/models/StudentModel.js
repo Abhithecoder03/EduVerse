@@ -1,16 +1,16 @@
 const mongoose = require("mongoose");
 const bcrypt = require('bcrypt');
-
 const { isEmail } = require('validator');
-const StudentModel = mongoose.Schema(
+
+const StudentSchema = new mongoose.Schema(
     {
         fName: {
             type: String,
-            requiured: true
+            required: true
         },
         lName: {
             type: String,
-            requiured: true
+            required: true
         },
         userName: {
             type: String,
@@ -19,32 +19,36 @@ const StudentModel = mongoose.Schema(
         },
         email: {
             type: String,
-            required: [true, 'please enter an valid email pass'],
+            required: [true, 'Please enter a valid email'],
             unique: true,
             lowercase: true,
-            validate: [isEmail, 'please enter a valid email']
+            validate: [isEmail, 'Please enter a valid email']
         },
-
         password: {
             type: String,
-            required: [true, 'please enter an valid email pass'],
-            minlength: [5, 'min pass length is 5 charter']
+            required: [true, 'Please enter a password'],
+            minlength: [5, 'Minimum password length is 5 characters']
         },
-        
-    }, {
-    timestamps: true
-}
+        role: {
+            type: String,
+            required: true
+        },
+    }, 
+    {
+        timestamps: true
+    }
 );
-StudentModel.pre('save', async function (next) {
+
+StudentSchema.pre('save', async function (next) {
     const salt = await bcrypt.genSalt();
-    this.password = await bcrypt.hash(this.password, salt)
+    this.password = await bcrypt.hash(this.password, salt);
     next();
-}); 3
+});
 
-
-//function to match the password
-StudentModel.methods.matchPassword=async function(enterdPassword){
-    return await bcrypt.compare(enterdPassword,this.password)
+// Function to match the password
+StudentSchema.methods.matchPassword = async function (enteredPassword) {
+    return await bcrypt.compare(enteredPassword, this.password);
 }
-const Student = mongoose.model("Student", StudentModel)
+
+const Student = mongoose.model("Student", StudentSchema);
 module.exports = Student;
