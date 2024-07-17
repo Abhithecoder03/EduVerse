@@ -19,7 +19,7 @@ const Solver = () => {
 
     const dispatch = useDispatch();
     const { doubts } = useSelector((state) => state.doubts);
-    console.log(doubts, "doubts")
+    console.log(doubts[0].responses, "doubts")
     useEffect(() => {
         dispatch(fetchDoubts());
     }, [dispatch]);
@@ -47,7 +47,7 @@ const Solver = () => {
                                 <div key={response._id} className="bg-gray-100 p-2 rounded mb-2 flex justify-between items-center ">
                                     <div>
                                         <p>{response.responseText}</p>
-                                        <p className="text-sm text-gray-500">Answered by: {response.teacher.fName} {response.teacher.lName}</p>
+                                        <p className="text-sm text-gray-500">Answered by You</p>
                                     </div>
                                     <button type="button" className="p-2 hover:bg-green-200 rounded-full" aria-label="Mark as Done" onClick={() => handleVideoCall(user._id)}>
                                     <VideocamIcon> </VideocamIcon>

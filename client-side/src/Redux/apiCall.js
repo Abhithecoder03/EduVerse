@@ -36,7 +36,7 @@ export const userLogout = (dispatch) => {
 
   export const addDoubt = (doubtText, user) => async (dispatch) => {
     try {
-      const response = await axios.post('http://localhost:5000/adddoubts', {
+      const response = await axios.post('https://eduverse-zcxl.onrender.com/adddoubts', {
         title: doubtText,
         description: doubtText,
         student: user._id, // Ensure user._id exists and is correctly passed
@@ -55,7 +55,7 @@ export const userLogout = (dispatch) => {
     console.log("user:", user);  // Logging the user to check
   
     try {
-      const response = await axios.post(`http://localhost:5000/doubts/${doubtId}/response`, {
+      const response = await axios.post(`https://eduverse-zcxl.onrender.com/doubts/${doubtId}/response`, {
         responseText,
         teacher: user._id,
       });
@@ -91,7 +91,7 @@ export const addFollowUpResponse = (doubtId, responseId, followUpText, user) => 
 export const fetchDoubts = () => async (dispatch) => {
   dispatch(fetchDoubtsStart());
   try {
-    const response = await axios.get('http://localhost:5000/alldoubts');
+    const response = await axios.get('https://eduverse-zcxl.onrender.com/alldoubts');
     dispatch(fetchDoubtsSuccess(response.data));
   } catch (error) {
     dispatch(fetchDoubtsFailure(error.message));

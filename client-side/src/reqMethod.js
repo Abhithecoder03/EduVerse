@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000/student";
+const BASE_URL = "https://eduverse-zcxl.onrender.com/student";
 
 
 export const publicRequest = axios.create({
