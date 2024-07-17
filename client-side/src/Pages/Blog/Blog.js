@@ -60,7 +60,7 @@ const Blog = () => {
                 <div className="flex justify-between px-4 py-2">
                   <div className="flex">
                     <button className="text-sm truncate md:text-base bg-yellow p-2 rounded-full text-center font-semibold mr-4">
-                      Carrer Advice
+                      Career Advice
                     </button>
                     <span className="hidden md:block mr-4 pt-2">Time Read</span>
                     <span className="hidden md:block mr-4 pt-2">

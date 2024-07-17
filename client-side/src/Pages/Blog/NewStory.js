@@ -25,7 +25,7 @@ const NewStory = () => {
         };
 
         try {
-            const response = await axios.post('http://localhost:5000/new-blog', newBlog, {
+            const response = await axios.post('https://eduverse-zcxl.onrender.com/new-blog', newBlog, {
                 headers: {
                     'Content-Type': 'application/json'
                 }
