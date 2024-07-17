@@ -2,25 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base{
-  body{
-    margin:0;
+@layer base {
+  body {
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
-  h1{
-    font-family: 'Ubuntu', sans-serif;
+  /* Hide scrollbar for Webkit-based browsers */
+  ::-webkit-scrollbar {
+    width: 0.5em; /* Set width to 0 to hide scrollbar */
   }
-  h2,span,a{
-    font-family: 'Roboto Slab', serif;
+
+  ::-webkit-scrollbar-thumb {
+    background-color: transparent; /* Set background color to transparent */
   }
-  h4{
-    font-family: 'Roboto Slab', serif;
+
+  h1 {
+    font-family: "Ubuntu", sans-serif;
+  }
+  h2,
+  span,
+  a {
+    font-family: "Roboto Slab", serif;
+  }
+  h4 {
+    font-family: "Roboto Slab", serif;
     font-weight: 600;
   }
-  button{
-    font-family: 'Roboto Slab', serif;
+  button {
+    font-family: "Roboto Slab", serif;
     font-weight: 200;
+  }
+  h1{
+    font-family: 'Poppins', sans-serif;
   }
   
 }

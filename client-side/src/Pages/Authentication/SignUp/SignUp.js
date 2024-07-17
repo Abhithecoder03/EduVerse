@@ -18,7 +18,10 @@ import {
 } from "@chakra-ui/react";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { VisibilityOff } from "@mui/icons-material";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import { register } from "../../../Redux/apiCall";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 function InitialFocus() {
   const {
@@ -37,9 +40,29 @@ function InitialFocus() {
 
   const [toggle, setToggle] = useState(false);
 
+  //register bcakend calling using redux
+  const [fName,setFname]=useState('')
+  const [lName,setLname]=useState('')
+  const [userName,setUserName]=useState('')
+  const [email,setEmail]=useState('')
+  const [password,setPassword]=useState('')
+  const [role,setRole]=useState('')
+  const navigate=useNavigate()
+  const dispatch = useDispatch()
+
+  //
+  const handleRegister=(e)=>{
+   
+    e.preventDefault();
+    register(dispatch,{fName,lName,userName,email,password,role})
+    navigate('/Student/profile');
+    
+  }
+  
+
   return (
     <>
-      <div className="w-full h-screen bg-[#F8F6F2]  overflow-hidden">
+      <div className="w-full h-screen bg-[#F8F6F2]  ">
         <Box className="flex flex-col md:flex-row w-full h-full items-center justify-center">
           <Box className=" flex flex-col lg:w-1/4 h-1/2  bg-yellow items-center justify-around overflow-hidden">
             <div className="mt-6">
@@ -60,7 +83,10 @@ function InitialFocus() {
                 bg="#2EB8CB"
                 color="white"
                 _hover={{ bg: "#FFE143", color: "#ffff" }}
-                onClick={onOpen2}
+                onClick={() => {
+                  onOpen2();
+                  setRole("teacher");
+                }}
               >
                 Sign up
               </Button>
@@ -84,7 +110,10 @@ function InitialFocus() {
                 className=" mb-4"
                 bg="#FFE143"
                 _hover={{ bg: "#2EB8CB", color: "#ffff" }}
-                onClick={onOpen1}
+                onClick={() => {
+                  onOpen1();
+                  setRole("student");
+                }}
               >
                 Sign up
               </Button>
@@ -121,22 +150,26 @@ function InitialFocus() {
                     ref={initialRef}
                     type="name"
                     placeholder="Enter Here..."
+                    onChange={(e)=>setFname(e.target.value)}
                   />
                 </FormControl>
 
                 <FormControl className="mx-2">
                   <FormLabel>Last name</FormLabel>
-                  <Input type="name" placeholder="Enter Here..." />
+                  <Input type="name" placeholder="Enter Here..."
+                  onChange={(e)=>setLname(e.target.value)} />
                 </FormControl>
               </div>
 
               <FormControl mt={4}>
                 <FormLabel>User Name</FormLabel>
-                <Input type="name" placeholder="Enter Here..." />
+                <Input type="name" placeholder="Enter Here..."
+                onChange={(e)=>setUserName(e.target.value)} />
               </FormControl>
               <FormControl mt={4}>
                 <FormLabel>Email</FormLabel>
-                <Input type="email" placeholder="Enter Here..." />
+                <Input type="email" placeholder="Enter Here..."
+                onChange={(e)=>setEmail(e.target.value)} />
               </FormControl>
 
               <div className="flex">
@@ -146,6 +179,7 @@ function InitialFocus() {
                     <Input
                       type={toggle ? "text" : "password"}
                       placeholder="******"
+                      onChange={(e)=>setPassword(e.target.value)}
                     />
                     <InputRightElement>
                       <Button onClick={() => setToggle(!toggle)}>
@@ -161,6 +195,7 @@ function InitialFocus() {
                     <Input
                       type={toggle ? "text" : "password"}
                       placeholder="******"
+                    
                     />
                     <InputRightElement>
                       <Button onClick={() => setToggle(!toggle)}>
@@ -173,16 +208,16 @@ function InitialFocus() {
             </ModalBody>
             <div className=" w-full flex flex-col align-center items-center justify-center px-7 text-center">
               <p className="text-s font-semibold px-4 ">
-                {" "}
-                By creating an account, you agree EduVerse’s{" "}
+                
+                By creating an account, you agree EduVerse’s
                 <span className="text-s text-blue">
-                  {" "}
+                  
                   <Link to="/termConsitions">all Terms & Conditions</Link>
-                </span>{" "}
-                and{" "}
+                </span>
+                and
                 <span className="text-s text-blue">
-                  {" "}
-                  <Link to="/privacy">Privacy Policy</Link>{" "}
+                  
+                  <Link to="/privacy">Privacy Policy</Link>
                 </span>
               </p>
             </div>
@@ -192,6 +227,7 @@ function InitialFocus() {
                 className="w-full"
                 _hover={{ bg: "#2EB8CB", color: "#ffff" }}
                 bg="#FFE143"
+                onClick={handleRegister}
               >
                 Continue
               </Button>
@@ -200,7 +236,6 @@ function InitialFocus() {
               <div className="w-full flex align-middle items-center align-center justify-center text-center h-auto p-3 border hover:border-blue ">
                 <p>Already Have an Account? </p>
                 <Link className="text-s text-blue pl-1" to="/login">
-                  {" "}
                   Login
                 </Link>
               </div>
@@ -237,22 +272,25 @@ function InitialFocus() {
                     ref={initialRef}
                     type="name"
                     placeholder="Enter Here..."
+                    onChange={(e)=>setFname(e.target.value)}
                   />
                 </FormControl>
 
                 <FormControl className="mx-2">
                   <FormLabel>Last name</FormLabel>
-                  <Input type="name" placeholder="Enter Here..." />
+                  <Input type="name" placeholder="Enter Here..."  onChange={(e)=>setLname(e.target.value)} />
                 </FormControl>
               </div>
 
               <FormControl mt={4}>
                 <FormLabel>Username</FormLabel>
-                <Input type="name" placeholder="Enter Here..." />
+                <Input type="name" placeholder="Enter Here..." 
+                onChange={(e)=>setUserName(e.target.value)}/>
               </FormControl>
               <FormControl mt={4}>
                 <FormLabel>Email</FormLabel>
-                <Input type="email" placeholder="Enter Here..." />
+                <Input type="email" placeholder="Enter Here..." 
+                onChange={(e)=>setEmail(e.target.value)}/>
               </FormControl>
 
               <div className="flex">
@@ -262,6 +300,7 @@ function InitialFocus() {
                     <Input
                       type={toggle ? "text" : "password"}
                       placeholder="******"
+                      onChange={(e)=>setPassword(e.target.value)}
                     />
                     <InputRightElement>
                       <Button onClick={() => setToggle(!toggle)}>
@@ -289,16 +328,16 @@ function InitialFocus() {
             </ModalBody>
             <div className=" w-full flex flex-col align-center items-center justify-center px-7 text-center">
               <p className="text-s font-semibold px-4 ">
-                {" "}
-                By creating an account, you agree EduVerse’s{" "}
+                
+                By creating an account, you agree EduVerse’s
                 <span className="text-s text-blue">
-                  {" "}
+                  
                   <a href="">all Terms & Conditions</a>
-                </span>{" "}
-                and{" "}
+                </span>
+                and
                 <span className="text-s text-blue">
-                  {" "}
-                  <a href="">Privacy Policy</a>{" "}
+                  
+                  <a href="">Privacy Policy</a>
                 </span>
               </p>
             </div>
@@ -308,6 +347,8 @@ function InitialFocus() {
                 className="w-full"
                 _hover={{ bg: "#2EB8CB", color: "#ffff" }}
                 bg="#FFE143"
+                
+                onClick={handleRegister}
               >
                 Continue
               </Button>
@@ -316,7 +357,6 @@ function InitialFocus() {
               <div className="w-full flex align-middle items-center align-center justify-center text-center h-auto p-3 border hover:border-blue ">
                 <p>Already Have an Account? </p>
                 <Link className="text-s text-blue pl-1" to="/login">
-                  {" "}
                   Login
                 </Link>
               </div>
