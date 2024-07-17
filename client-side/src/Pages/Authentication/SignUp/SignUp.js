@@ -52,7 +52,7 @@ function InitialFocus() {
 
   //
   const handleRegister=(e)=>{
-    console.log("Clicked",role);
+   
     e.preventDefault();
     register(dispatch,{fName,lName,userName,email,password,role})
     navigate('/Student/profile');
@@ -112,7 +112,7 @@ function InitialFocus() {
                 _hover={{ bg: "#2EB8CB", color: "#ffff" }}
                 onClick={() => {
                   onOpen1();
-                  setRole("studnet");
+                  setRole("student");
                 }}
               >
                 Sign up

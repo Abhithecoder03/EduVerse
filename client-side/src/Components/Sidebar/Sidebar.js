@@ -24,13 +24,13 @@ export const Sidebar = () => {
   
   const user = useSelector((state) => state.user.currentUser);
   const items = [
-    { title: 'Dashboard', Icon:MdOutlineDashboardCustomize , href: '/student' },
-    { title: 'Profile', Icon: BiUser, href: '/student/profile' },
-    { title: 'Books', Icon: LiaBookSolid, href: '/student/books' },
-    { title: 'Video Course', Icon: PiVideo, href: '/student/videoCourse' },
+    { title: 'Dashboard', Icon:MdOutlineDashboardCustomize , href: '/Student' },
+    { title: 'Profile', Icon: BiUser, href: '/Student/profile' },
+    { title: 'Books', Icon: LiaBookSolid, href: '/Student/books' },
+    { title: 'Video Course', Icon: PiVideo, href: '/Student/videoCourse' },
     { title: 'Expert', Icon: HiOutlineChatBubbleBottomCenterText, href: '/Student/doubts' },
     { title: 'Wishlist', Icon: CiBookmarkPlus, href: '#' },
-    { title: 'Doubt Solving', Icon: CiBookmarkPlus, href: '/Student/doubts/solver' , hideFor: 'studnet'},
+    { title: 'Doubt Solving', Icon: CiBookmarkPlus, href: '/Student/doubts/solver' , hideFor: 'student'},
     { title: 'Ask Doubt', Icon: TbMessageQuestion, href: `/Student/doubt/${user._id}`, hideFor: 'teacher' },
   ]
   return (
