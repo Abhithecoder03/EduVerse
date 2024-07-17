@@ -13,11 +13,11 @@ const DoubtChat = () => {
   const navigate=useNavigate()
   
   const dispatch = useDispatch();
-  console.log(user)
+
 
   const handleDoubtSubmit = (e) => {
     e.preventDefault();
-    console.log("Submitting doubt:", newDoubt);
+ 
     dispatch(addDoubt(newDoubt, user));
     setNewDoubt("");
   };
@@ -31,14 +31,12 @@ const DoubtChat = () => {
   };
  
   const  {doubts} = useSelector((state) => state.doubts);
-  console.log(doubts[2].student.fName,"doubts[2].student[0]")
+  
   useEffect(() => {
     dispatch(fetchDoubts());
   }, [dispatch]);
   const handleVideoCall=(ID)=>{
-    console.log(
-      ID,"id of teacher"
-    );
+  
     navigate(`/Student/doubt/video/${ID}`)
   }
   return (

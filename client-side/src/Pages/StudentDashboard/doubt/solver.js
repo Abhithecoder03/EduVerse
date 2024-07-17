@@ -19,15 +19,13 @@ const Solver = () => {
 
     const dispatch = useDispatch();
     const { doubts } = useSelector((state) => state.doubts);
-    console.log(doubts[0].responses, "doubts")
+   
     useEffect(() => {
         dispatch(fetchDoubts());
     }, [dispatch]);
 
     const handleVideoCall=(ID)=>{
-        console.log(
-          ID,"id of teacher"
-        );
+      
         navigate(`/Student/doubt/video/${ID}`)
       }
 

@@ -9,7 +9,7 @@ function BlogDetail() {
     useEffect(() => {
         const fetchBlog = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/blog/${id}`);
+                const response = await axios.get(`https://eduverse-zcxl.onrender.com/blog/${id}`);
                 setBlog(response.data);
             } catch (error) {
                 console.error('Error fetching blog:', error);
@@ -18,7 +18,7 @@ function BlogDetail() {
 
         fetchBlog();
     }, []);
-    console.log(blog,"blog")
+  
   return (
    <>
    {blog &&

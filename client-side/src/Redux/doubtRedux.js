@@ -26,7 +26,7 @@ const doubtSlice = createSlice({
     },
     addDoubt: (state, action) => {
       state.doubts.push(action.payload);
-      console.log("payload",action.payload)
+     
     },
     addResponse: (state, action) => {
       const doubt = state.doubts.find(doubt => doubt._id === action.payload.doubtId);

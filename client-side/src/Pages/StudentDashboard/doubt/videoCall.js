@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt';
 const VideoPage=()=>{
     const {id}=useParams();
-    console.log(id)
+   
     const roomID=id
     let myMeeting = async (element) => {
    // generate Kit Token

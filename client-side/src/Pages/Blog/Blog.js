@@ -14,7 +14,7 @@ const Blog = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/all-blogs");
+        const response = await axios.get("https://eduverse-zcxl.onrender.com/all-blogs");
         setBlogs(response.data);
 
       } catch (error) {
@@ -24,7 +24,7 @@ const Blog = () => {
 
     fetchBlogs();
   }, []);
-  console.log(blogs);
+
   return (
     <div className="flex bg-grey overflow-hidden">
       <div className="w-full flex flex-col lg:flex flex-col w-2/3 h-full border-r-2 border-gray-400 overflow-y-auto">

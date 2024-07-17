@@ -7,7 +7,7 @@ import { LuSendHorizonal } from "react-icons/lu";
 
 const Chat = () => {
   const apiKey = process.env.REACT_APP_API_KEY;
-  console.log(`API Key: ${apiKey}`);
+
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
 
